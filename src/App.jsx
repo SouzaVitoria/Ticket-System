@@ -1,8 +1,11 @@
+import { BrowserRouter } from "react-router-dom"
+import RoutesAll from "./routes"
+
 const App = () => {
   return (
-    <div className="App">
-    
-    </div>
+    <BrowserRouter>
+      <RoutesAll />
+    </BrowserRouter>
   );
 }
 
