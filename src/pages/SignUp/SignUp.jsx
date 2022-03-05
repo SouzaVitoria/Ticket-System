@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/Auth";
 import Logo from "../../assets/logo.png";
 
 const SignUp = () => {
-  const { signUp } = useContext(AuthContext);
+  const { signUp, loadingAuth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -43,7 +43,9 @@ const SignUp = () => {
             onChange={e => setPassword(e.target.value)}
             required
           />
-          <button type="submit">Cadastrar</button>
+          <button type="submit">
+            {loadingAuth ? "Carregando..." : "Cadastrar"}
+          </button>
         </form>
         <Link to="/">Já tem uma conta? Entre</Link>
       </div>

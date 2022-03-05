@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
       .auth()
       .createUserWithEmailAndPassword(email, passwoard)
       .then(async value => {
-        let uid = value.user.id;
+        let uid = value.user.uid;
         await firebase
           .firestore()
           .collection("users")
@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
           })
           .then(() => {
             let data = {
-              uid,
+              uid: value.user.uid,
               name,
               email: value.user.email,
               avatarUrl: null,
@@ -50,6 +50,34 @@ const AuthProvider = ({ children }) => {
             console.log(error);
             setLoadingAuth(false);
           });
+      });
+  };
+
+  const signIn = async (email, passwoard) => {
+    setLoadingAuth(true);
+    await firebase
+      .auth()
+      .signInWithEmailAndPassword(email, passwoard)
+      .then(async value => {
+        let uid = value.user.uid;
+        const userProfile = await firebase
+          .firestore()
+          .collection("users")
+          .doc(uid)
+          .get();
+
+        let data = {
+          name: userProfile.data().nome,
+          email: userProfile.data().email,
+          avatarUrl: userProfile.data().avatarUrl,
+        };
+        setUser(data);
+        storageUser(data);
+        setLoadingAuth(false);
+      })
+      .catch(error => {
+        console.log(error);
+        setLoadingAuth(false);
       });
   };
 
@@ -71,6 +99,8 @@ const AuthProvider = ({ children }) => {
         loading,
         signUp,
         signOut,
+        signIn,
+        loadingAuth,
       }}
     >
       {children}
