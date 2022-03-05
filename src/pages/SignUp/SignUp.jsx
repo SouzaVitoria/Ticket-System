@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/Auth";
 import Logo from "../../assets/logo.png";
 
 const SignUp = () => {
+  const { signUp } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert("clicou");
+    signUp(name, email, password);
   };
 
   return (
@@ -25,18 +27,21 @@ const SignUp = () => {
             placeholder="Seu Nome"
             value={name}
             onChange={e => setName(e.target.value)}
+            required
           />
           <input
             type="email"
             placeholder="email@email.com"
             value={email}
             onChange={e => setEmail(e.target.value)}
+            required
           />
           <input
             type="password"
             placeholder="********"
             value={password}
             onChange={e => setPassword(e.target.value)}
+            required
           />
           <button type="submit">Cadastrar</button>
         </form>
