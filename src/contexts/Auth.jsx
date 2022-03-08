@@ -47,12 +47,12 @@ const AuthProvider = ({ children }) => {
             storageUser(data);
             toast.success("Seja bem-vindo!");
             setLoadingAuth(false);
-          })
-          .catch(error => {
-            console.log(error);
-            toast.error("Ops! Algo deu errado!");
-            setLoadingAuth(false);
           });
+      })
+      .catch(error => {
+        console.log(error);
+        toast.error("Ops! Algo deu errado!");
+        setLoadingAuth(false);
       });
   };
 
