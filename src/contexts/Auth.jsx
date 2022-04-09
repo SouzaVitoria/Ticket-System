@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
 
         let data = {
           name: userProfile.data().nome,
-          email: userProfile.data().email,
+          email: value.user.email,
           avatarUrl: userProfile.data().avatarUrl,
         };
         setUser(data);
