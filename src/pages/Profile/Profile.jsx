@@ -13,6 +13,22 @@ export default function Profile() {
   const [name, setName] = useState(user?.name);
   const [email, setEmail] = useState(user?.email);
   const [avatarUrl, setAvatarUrl] = useState(user?.avatarUrl);
+  const [currentAvatar, setCurrentAvatar] = useState(null);
+
+  const handleFile = e => {
+    if (e.target.files[0]) {
+      const image = e.target.files[0];
+
+      if (image.type === "image/jpeg" || image.type === "image/png") {
+        setCurrentAvatar(image);
+        setAvatarUrl(URL.createObjectURL(image));
+      } else {
+        alert("png ou jpeg");
+        setCurrentAvatar(null);
+        return;
+      }
+    }
+  };
 
   return (
     <div>
@@ -28,7 +44,8 @@ export default function Profile() {
               <span>
                 <FiUpload color="#FFF" size={25} />
               </span>
-              <input type="file" accept="image/*" /> <br />
+              <input type="file" accept="image/*" onChange={handleFile} />{" "}
+              <br />
               {!avatarUrl ? (
                 <img
                   src={avatar}
