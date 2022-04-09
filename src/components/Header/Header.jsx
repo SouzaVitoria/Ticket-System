@@ -16,7 +16,7 @@ const Header = () => {
           alt="Foto Usuário"
         />
       </div>
-      <Link to="/dashboards">
+      <Link to="/dashboard">
         <FiHome color="#FFF" size={24} />
         Chamados
       </Link>
