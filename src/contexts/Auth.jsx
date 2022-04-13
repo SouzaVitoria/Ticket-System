@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
           .collection("users")
           .doc(uid)
           .set({
-            nome: name,
+            name: name,
             avatarUrl: null,
           })
           .then(() => {
@@ -64,13 +64,14 @@ const AuthProvider = ({ children }) => {
       .then(async value => {
         let uid = value.user.uid;
         const userProfile = await firebase
-          .firestore()
-          .collection("users")
-          .doc(uid)
-          .get();
+        .firestore()
+        .collection("users")
+        .doc(uid)
+        .get();
 
         let data = {
-          name: userProfile.data().nome,
+          uid,
+          name: userProfile.data().name,
           email: value.user.email,
           avatarUrl: userProfile.data().avatarUrl,
         };
@@ -106,6 +107,8 @@ const AuthProvider = ({ children }) => {
         signOut,
         signIn,
         loadingAuth,
+        setUser,
+        storageUser,
       }}
     >
       {children}
