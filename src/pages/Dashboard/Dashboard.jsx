@@ -1,5 +1,6 @@
 import Header from "../../components/Header/Header";
 import Title from "../../components/Title/Title";
+import Table from "./Tickets/Table";
 import { FiMessageSquare, FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import "./styles.css";
@@ -31,6 +32,7 @@ const Dashboard = () => {
                 <FiPlus size={25} color="#FFF" />
                 Novo chamado
               </Link>
+              <Table />
             </>
           )}
         </div>
