@@ -1,13 +1,40 @@
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/Auth";
 import Header from "../../components/Header/Header";
+import Title from "../../components/Title/Title";
+import { FiMessageSquare, FiPlus } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import "./styles.css";
+import { useState } from "react";
 
 const Dashboard = () => {
-  const { signOut } = useContext(AuthContext);
+  const [tickets, setTickets] = useState([]);
 
   return (
-    <div className="Dashboard">
+    <div>
       <Header />
+      <div className="content">
+        <Title name="Meu Perfil">
+          <FiMessageSquare size={25} />
+        </Title>
+
+        <div className="container dashboard">
+          {tickets.length === 0 ? (
+            <>
+              <span> Nenhum chamado registrado. </span>
+              <Link to="/new-ticket" className="new-ticket">
+                <FiPlus size={25} color="#FFF" />
+                Novo chamado
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/new-ticket" className="new-ticket">
+                <FiPlus size={25} color="#FFF" />
+                Novo chamado
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
