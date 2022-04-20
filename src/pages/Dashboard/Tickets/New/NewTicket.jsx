@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FiPlusCircle } from "react-icons/fi";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../../contexts/Auth";
 import firebase from "../../../../services/firebaseConnection";
 import Header from "../../../../components/Header/Header";
@@ -49,8 +50,26 @@ export default function NewTicket() {
     loadCustomers();
   }, []);
 
-  const handleRegister = e => {
+  const handleRegister = async e => {
     e.preventDefault();
+    await firebase
+      .firestore()
+      .collection("tickets")
+      .add({
+        criadoEm: new Date(),
+        cliente: customers[customerSelected].nomeFantasia,
+        clienteId: customers[customerSelected].id,
+        assunto: subject,
+        status,
+        complemento: complement,
+        usuarioId: user.uid,
+      })
+      .then(() => {
+        toast.success("Chamado criado com sucesso!");
+        setComplement("");
+        setCustomerSelected("");
+      })
+      .catch(error => console.log(error));
   };
 
   const handleChangeSelect = e => {
