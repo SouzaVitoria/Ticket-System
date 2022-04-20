@@ -7,7 +7,7 @@ import "./styles.css";
 import { useState } from "react";
 
 const Dashboard = () => {
-  const [tickets, setTickets] = useState([]);
+  const [tickets, setTickets] = useState([1]);
 
   return (
     <div>
