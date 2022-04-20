@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiSearch, FiEdit2 } from "react-icons/fi";
-import firebase from "../../../../services/firebaseConnection";
+import firebase from "../../services/firebaseConnection";
 import "./styles.css";
 import { format } from "date-fns";
 
