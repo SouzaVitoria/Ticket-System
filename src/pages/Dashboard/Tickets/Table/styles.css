@@ -60,6 +60,11 @@ table td .badge {
   font-size: 1.1em;
 }
 
+.btn-more:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
 @media screen and (max-width: 782px) {
   table {
     border: 0;

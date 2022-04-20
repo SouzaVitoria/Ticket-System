@@ -118,8 +118,8 @@ export default function Table() {
           Buscando dados...
         </h3>
       )}
-      {!loadingMore && !isEmpty && (
-        <button className="btn-more" onClick={handleMore}>
+      {!loadingMore && (
+        <button className="btn-more" onClick={handleMore} disabled={isEmpty}>
           Ver mais
         </button>
       )}
