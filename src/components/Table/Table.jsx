@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FiSearch, FiEdit2 } from "react-icons/fi";
 import firebase from "../../services/firebaseConnection";
 import "./styles.css";
 import { format } from "date-fns";
+import { ModalContext } from "../../contexts/Modal";
 
 const listRef = firebase
   .firestore()
@@ -10,6 +11,7 @@ const listRef = firebase
   .orderBy("criadoEm", "desc");
 
 export default function Table() {
+  const { togglePostModal } = useContext(ModalContext);
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState();
@@ -17,21 +19,20 @@ export default function Table() {
   const [isEmpty, setIsEmpty] = useState();
 
   useEffect(() => {
+    const loadTicket = async () => {
+      await listRef
+        .limit(5)
+        .get()
+        .then(snapshot => {
+          updateState(snapshot);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      setLoading(false);
+    };
     loadTicket();
   }, []);
-
-  const loadTicket = async () => {
-    await listRef
-      .limit(5)
-      .get()
-      .then(snapshot => {
-        updateState(snapshot);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    setLoading(false);
-  };
 
   const updateState = async snapshot => {
     const isCollectionEmpty = snapshot.size === 0;
@@ -87,7 +88,11 @@ export default function Table() {
         <td data-label="Cadastrado">{item.createdFormatted}</td>
         <td data-label="#">
           <button style={{ backgroundColor: "#3583f6" }}>
-            <FiSearch size={17} color="#FFF" />
+            <FiSearch
+              size={17}
+              color="#FFF"
+              onClick={() => togglePostModal(item)}
+            />
           </button>
           <button style={{ backgroundColor: "#f6a935" }}>
             <FiEdit2 size={17} color="#FFF" />
@@ -110,7 +115,13 @@ export default function Table() {
           </tr>
         </thead>
         <tbody>
-          {loading ? <div>Buscando chamados...</div> : renderContent()}
+          {loading ? (
+            <tr>
+              <td>Buscando chamados...</td>
+            </tr>
+          ) : (
+            renderContent()
+          )}
         </tbody>
       </table>
       {loadingMore && (
