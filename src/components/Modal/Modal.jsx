@@ -13,11 +13,11 @@ export default function Modal({ content, close }) {
           <h2>Detalhes do chamado</h2>
           <div className="row">
             <div className="column">
-              <strong>Cadastrado em:</strong> <a>{content.createdFormatted}</a>
+              <strong>Cadastrado em:</strong> <i>{content.createdFormatted}</i>
             </div>
             <div className="column">
               <strong>Status:</strong>
-              <a
+              <i
                 className="status"
                 style={{
                   color: "#FFF",
@@ -26,14 +26,14 @@ export default function Modal({ content, close }) {
                 }}
               >
                 {content.status}
-              </a>
+              </i>
             </div>
           </div>
           <div className="row">
-            <strong>Cliente:</strong> <a>{content.client}</a>
+            <strong>Cliente:</strong> <i>{content.client}</i>
           </div>
           <div className="row">
-            <strong>Assunto:</strong> <a>{content.subject}</a>
+            <strong>Assunto:</strong> <i>{content.subject}</i>
           </div>
           {content.complement && (
             <div className="row row-complement">

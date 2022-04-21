@@ -75,12 +75,13 @@
   padding: 2px 8px;
 }
 
-.modal .row a.status {
+.modal .row i.status {
   border-radius: 5px;
   padding: 4px 8px;
 }
 
 .modal .row p {
+  font-style: italic;
   padding: .5em 8px 0;
   white-space: pre-wrap
 }
