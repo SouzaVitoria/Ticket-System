@@ -1,0 +1,86 @@
+.modal,
+.modal .container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 99;
+}
+
+.modal .container {
+  bottom: auto;
+  top: 15%;
+  max-width: 600px;
+  min-height: 235px;
+  margin: auto;
+  padding: 3em 2rem;
+  background-color: rgb(231, 231, 231);
+  box-shadow: 0 0 20px rgba(0, 0, 0, .9);
+}
+
+.modal .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  border: none;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.modal .content {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.modal h2 {
+  text-align: center;
+  margin-bottom: 1.2em;
+  font-size: 1.8em;
+}
+
+.modal .row {
+  display: flex;
+  width: 100%;
+  font-size: 1.2em;
+  color: #121212;
+  margin-bottom: 1em;
+}
+
+.modal .row.row-complement {
+  flex-direction: column;
+}
+
+.modal .column {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.modal .column:last-child {
+  justify-content: flex-end;
+}
+
+.modal .row strong {
+  margin-right: .3em;
+  padding: 2px 8px;
+}
+
+.modal .row a.status {
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+
+.modal .row p {
+  padding: .5em 8px 0;
+  white-space: pre-wrap
+}

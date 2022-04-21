@@ -39,10 +39,12 @@ export default function Table() {
     if (!isCollectionEmpty) {
       let list = [];
       snapshot.forEach(doc => {
+        console.log(doc.data())
         list.push({
           client: doc.data().cliente,
           subject: doc.data().assunto,
           status: doc.data().status,
+          complement: doc.data().complemento,
           created: doc.data().criadoEm,
           createdFormatted: format(doc.data().criadoEm.toDate(), "dd/mm/yyyy"),
         });

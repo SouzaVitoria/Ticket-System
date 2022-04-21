@@ -4,10 +4,14 @@ import Table from "../../components/Table/Table";
 import { FiMessageSquare, FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import "./styles.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import Modal from "../../components/Modal/Modal";
+import { ModalContext } from "../../contexts/Modal";
 
 const Dashboard = () => {
   const [tickets, setTickets] = useState([1]);
+  const { showPostModal, itemDetail, togglePostModal } =
+    useContext(ModalContext);
 
   return (
     <div>
@@ -33,6 +37,9 @@ const Dashboard = () => {
                 Novo chamado
               </Link>
               <Table />
+              {showPostModal && (
+                <Modal content={itemDetail} close={togglePostModal} />
+              )}
             </>
           )}
         </div>
