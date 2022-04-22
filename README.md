@@ -13,6 +13,10 @@ O Projeto **Ticket System** foi criado durante o módulo "Sistema de Chamados" d
 
 No terminal irá mostrar em qual endereço que o projeto estará rodando, e automaticamente abrirá no seu navegador.
 
+#### Bibliotecas usadas
+- toast:
+- date-fns: 
+
 ### Contribuição
 
 Quer contribuir com este projeto? Então siga os passos abaixo:
