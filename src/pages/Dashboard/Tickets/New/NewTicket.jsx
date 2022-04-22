@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FiPlusCircle } from "react-icons/fi";
 import { toast } from "react-toastify";
+import { useHistory, useParams } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/Auth";
 import firebase from "../../../../services/firebaseConnection";
 import Header from "../../../../components/Header/Header";
@@ -8,6 +9,8 @@ import Title from "../../../../components/Title/Title";
 import "./styles.css";
 
 export default function NewTicket() {
+  const { id } = useParams();
+  const { history } = useHistory();
   const { user } = useContext(AuthContext);
   const [loadingCustomers, setLoadingCustomers] = useState(true);
   const [customers, setCustomers] = useState([]);
@@ -15,6 +18,7 @@ export default function NewTicket() {
   const [subject, setSubject] = useState("Suporte");
   const [status, setStatus] = useState("Aberto");
   const [complement, setComplement] = useState("");
+  const [idCustomer, setIdCustomer] = useState(false);
 
   useEffect(() => {
     async function loadCustomers() {
@@ -40,6 +44,10 @@ export default function NewTicket() {
 
           setCustomers(list);
           setLoadingCustomers(false);
+
+          if (id) {
+            loadId(list);
+          }
         })
         .catch(error => {
           console.log(error);
@@ -47,11 +55,59 @@ export default function NewTicket() {
           setCustomers([{ id: "1", nomeFantasia: "" }]);
         });
     }
+
+    const loadId = async list => {
+      await firebase
+        .firestore()
+        .collection("tickets")
+        .doc(id)
+        .get()
+        .then(snapshot => {
+          setSubject(snapshot.data().assunto);
+          setStatus(snapshot.data().status);
+          setComplement(snapshot.data().complemento);
+
+          let index = list.findIndex(
+            item => item.id === snapshot.data().clienteId
+          );
+          setCustomerSelected(index);
+          setIdCustomer(true);
+        })
+        .catch(error => {
+          console.log(error);
+          setIdCustomer(false);
+        });
+    };
+
     loadCustomers();
-  }, []);
+  }, [id]);
 
   const handleRegister = async e => {
     e.preventDefault();
+
+    if (idCustomer) {
+      await firebase
+        .firestore()
+        .collection("tickets")
+        .doc(id)
+        .update({
+          cliente: customers[customerSelected].nomeFantasia,
+          clienteId: customers[customerSelected].id,
+          assunto: subject,
+          status,
+          complemento: complement,
+          usuarioId: user.uid,
+        })
+        .then(() => {
+          toast.success("Chamado editado com sucesso");
+          setComplement("");
+          setCustomerSelected("");
+          history.push("/dashboard")
+        })
+        .catch(error => console.log(error));
+        return
+    }
+
     await firebase
       .firestore()
       .collection("tickets")

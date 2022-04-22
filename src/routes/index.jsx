@@ -16,6 +16,7 @@ const RoutesAll = () => {
       <Route exact path="/profile" component={Profile} isPrivate />
       <Route exact path="/customers" component={Customers} isPrivate />
       <Route exact path="/new-ticket" component={NewTicket} isPrivate />
+      <Route exact path="/new-ticket/:id" component={NewTicket} isPrivate />
     </Switch>
   );
 };

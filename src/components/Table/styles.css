@@ -30,6 +30,7 @@ table th {
   text-transform: uppercase;
 }
 
+table td a,
 table td button {
   border: 0;
   padding: 5px;
@@ -39,6 +40,7 @@ table td button {
   border-radius: 4px;
 }
 
+table td a svg,
 table td button svg {
   vertical-align: middle;
 }

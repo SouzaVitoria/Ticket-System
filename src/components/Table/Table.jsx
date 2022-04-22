@@ -3,6 +3,7 @@ import { FiSearch, FiEdit2 } from "react-icons/fi";
 import firebase from "../../services/firebaseConnection";
 import "./styles.css";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 import { ModalContext } from "../../contexts/Modal";
 
 const listRef = firebase
@@ -39,8 +40,8 @@ export default function Table() {
     if (!isCollectionEmpty) {
       let list = [];
       snapshot.forEach(doc => {
-        console.log(doc.data())
         list.push({
+          id: doc.id,
           client: doc.data().cliente,
           subject: doc.data().assunto,
           status: doc.data().status,
@@ -96,9 +97,12 @@ export default function Table() {
               onClick={() => togglePostModal(item)}
             />
           </button>
-          <button style={{ backgroundColor: "#f6a935" }}>
+          <Link
+            style={{ backgroundColor: "#f6a935" }}
+            to={`/new-ticket/${item.id}`}
+          >
             <FiEdit2 size={17} color="#FFF" />
-          </button>
+          </Link>
         </td>
       </tr>
     ));
