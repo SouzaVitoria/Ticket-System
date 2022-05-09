@@ -2,7 +2,9 @@
 
 ## ✨ Sobre o projeto
 
-O Projeto é um sistema de chamados onde o usuário se cadastra na plataforma e pode adicionar novos clientes e chamados. Verifica/atualizar os status dos chamados. Editar o seu perfil, adicionando imagem. Consegue ver a lista de chamados e clicando em um deles, abre-se um modal com todas as informações do chamado.
+O Projeto é um sistema de chamados onde o usuário se cadastra na plataforma e pode adicionar novos clientes e chamados. Verificar/atualizar os status dos chamados. Editar o seu perfil, adicionando imagem. Consegue ver a lista de chamados e clicando em um deles, abre-se um modal com todas as informações do chamado.
+
+## 🖥 Layout
 
 ![Login](./images/login.png)
 ![Cadastro de usuários](./images/sign_up.png)
