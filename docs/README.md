@@ -4,14 +4,14 @@
 
 O Projeto é um sistema de chamados onde o usuário se cadastra na plataforma e pode adicionar novos clientes e chamados. Verificar/atualizar os status dos chamados. Editar o seu perfil, adicionando imagem. Consegue ver a lista de chamados e clicando em um deles, abre-se um modal com todas as informações do chamado.
 
-### 🖥 Layout
+## 🖥 Layout
 
-<img src="./images/login.png" alt="Login" style="max-width: 500px" />
-<img src="./images/sign_up.png" alt="Cadastro de usuários" style="max-width: 500px" />
-<img src="./images/dashboard.png" alt="Dashboard" style="max-width: 500px" />
-<img src="./images/modal.png" alt="[Modal com mais informações" style="max-width: 500px" />
-<img src="./images/customers.png" alt="Cadastro de clientes" style="max-width: 500px" />
-<img src="./images/settings.png" alt="Configurações de perfil" style="max-width: 500px" />
+<img src="./images/login.png" alt="Login" style="max-width:500px;" />
+<img src="./images/sign_up.png" alt="Cadastro de usuários" style="max-width:500px;" />
+<img src="./images/dashboard.png" alt="Dashboard" style="max-width:500px;" />
+<img src="./images/modal.png" alt="[Modal com mais informações" style="max-width:500px;" />
+<img src="./images/customers.png" alt="Cadastro de clientes" style="max-width:500px;" />
+<img src="./images/settings.png" alt="Configurações de perfil" style="max-width:500px;" />
 
 ## 🚀 Tecnologias
 
