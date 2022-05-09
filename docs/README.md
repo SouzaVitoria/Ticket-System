@@ -6,12 +6,12 @@ O Projeto é um sistema de chamados onde o usuário se cadastra na plataforma e 
 
 ## 🖥 Layout
 
-<img src="./images/login.png" alt="Login" style="max-width:500px;" />
-<img src="./images/sign_up.png" alt="Cadastro de usuários" style="max-width:500px;" />
-<img src="./images/dashboard.png" alt="Dashboard" style="max-width:500px;" />
-<img src="./images/modal.png" alt="[Modal com mais informações" style="max-width:500px;" />
-<img src="./images/customers.png" alt="Cadastro de clientes" style="max-width:500px;" />
-<img src="./images/settings.png" alt="Configurações de perfil" style="max-width:500px;" />
+![Login](./images/login.png)
+![Cadastro de usuários](./images/sign_up.png)
+![Dashboard](./images/dashboard.png)
+![Modal com mais informações](./images/modal.png)
+![Cadastro de clientes](./images/customers.png)
+![Configurações de perfil](./images/settings.png)
 
 ## 🚀 Tecnologias
 
